@@ -9,19 +9,31 @@ import {
 
 const DataContext = createContext({});
 
-export const api = {
+export const api = {  
   loadData: async () => {
     const json = await fetch("/events.json");
     return json.json();
+    
   },
 };
 
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+
+   // Nouvelle variable pour stocker la dernière donnée
+  const [last, setLast] = useState (null); 
+
+
+  // Modification de la fonction pour inclure la mise à jour de la variable last
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      // Modification du fetch pour importer les dernières données
+      const fetchedData = await api.loadData();
+      setData(fetchedData);
+      // Mise à jour de la variable last avec la dernière donnée
+      setLast(fetchedData.events[fetchedData.events.length - 1]);
+
     } catch (err) {
       setError(err);
     }
@@ -37,6 +49,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last, /* ajout de last  */
       }}
     >
       {children}
@@ -49,5 +62,6 @@ DataProvider.propTypes = {
 }
 
 export const useData = () => useContext(DataContext);
+
 
 export default DataContext;
