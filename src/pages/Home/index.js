@@ -15,9 +15,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
 
-    const { last } = useData();  
-  
-    console.log(Modal);
+    const { last } = useData();   
 
   return (<>
     <header>
