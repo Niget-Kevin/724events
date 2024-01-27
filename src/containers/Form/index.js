@@ -4,7 +4,8 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
+ // diminution du délai pour les testes
+const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 900); })
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
@@ -16,7 +17,8 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
-        await onSuccess(); // Attendre que onSuccess soit terminé avant de continuer        
+        // Appelle la fonction onSuccess fournie en tant que prop
+        onSuccess();       
       } catch (err) {
         setSending(false);
         onError(err);

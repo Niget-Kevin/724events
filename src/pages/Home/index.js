@@ -25,6 +25,7 @@ const Page = () => {
       <section className="SliderContainer">
         <Slider />
       </section>
+      {/* ajout de l'id pour les liens hypertexte */}
       <section id="nos-services" className="ServicesContainer">
         <h2 className="Title">Nos services</h2>
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
@@ -54,12 +55,14 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
+      {/* ajout de l'id pour les liens hypertexte */}
       <section id="nos-realisations" className="EventsContainer">
         <h2 className="Title">Nos réalisations</h2>
         <EventList />
       </section>
-      <section className="PeoplesContainer">
-        <h2 id="notre-equipe" className="Title">Notre équipe</h2>
+      {/* ajout de l'id pour les liens hypertexte */}
+      <section className="PeoplesContainer"id="notre-equipe" >        
+        <h2 className="Title">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
         <div className="ListContainer">
           <PeopleCard
@@ -128,7 +131,7 @@ const Page = () => {
             title={last.title}
             date={new Date(last.date)}
             small
-            label="boom" 
+            label={last?.type}
           />                
         )}            
       </div>
