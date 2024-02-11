@@ -19,6 +19,7 @@ const Select = ({
     // Appeler la fonction onChange avec la nouvelle valeur
     onChange(newValue);
     setValue(newValue);
+    // Ajout de true pour fermer le Collaps
     setCollapsed(true);
   };
   return (

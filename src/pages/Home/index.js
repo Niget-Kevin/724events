@@ -55,7 +55,7 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
-      {/* ajout de l'id pour les liens hypertexte */}
+      {/* ajout de l'id pour les liens hypertexte  */}
       <section id="nos-realisations" className="EventsContainer">
         <h2 className="Title">Nos réalisations</h2>
         <EventList />
@@ -125,8 +125,10 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
+         {/* Utilisation de la condition && pour afficher l'EventCard seulement si 'last' est défini */}
         {last && (
           <EventCard
+            data-testid="event-card"
             imageSrc={last.cover}
             title={last.title}
             date={new Date(last.date)}

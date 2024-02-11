@@ -16,6 +16,7 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
+      // Utilisation de filter pour ne conserver que les événements du type sélectionné
       : data?.events.filter((event) => event.type === type)) || []
   ).filter((event, index) => {
     if (
@@ -47,7 +48,7 @@ const EventList = () => {
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
-          <div id="events" className="ListContainer">
+          <div id="events" className="ListContainer" data-testid="Event-list">
             {filteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
